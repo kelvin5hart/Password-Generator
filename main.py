@@ -16,26 +16,31 @@ nr_numbers = int(input(f"How many numbers would you like?\n"))
 #Hard Level - Order of characters randomised:
 #e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
 length = nr_letters + nr_numbers + nr_symbols
-password = []
+password = ""
 change = []
 password_new = ""
 code = set()
+#Generate random letters
 for i in range(nr_letters):
-  password.append(letters[random.randint(0, nr_letters - 1)])
+  password += random.choice(letters)
+
+#Generate random numbers 
 for i in range(nr_numbers):
-  password.append(numbers[random.randint(0, nr_numbers - 1)])
+  password += random.choice(numbers)
+
+#Generate random symbols
 for i in range(nr_symbols):
-  password.append(symbols[random.randint(0, nr_symbols - 1)])
+  password += random.choice(symbols)
 
 n = 0
-
+#Use while loop to rearrange the password
 while n < length:
   t = random.randint(0, length - 1)
   if t not in code:
-    change.append(password[t])
+    password_new += password[t]
     code.add(t)
     n += 1
-print(password_new.join(change))
+print(password_new)
 
 
 
